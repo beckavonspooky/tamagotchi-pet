@@ -19,7 +19,29 @@ class Tomagotchi {
 
     }
 };
-
 const henry = new Tomagotchi();//instantiate your tomagotchi
 henry.greet();
+
+
+$('#gameTimer').on('click', ()=>{
+    console.log('button works');
+    game.setGameTimer();
+})
+
+
+const game = {
+    player: 'henry',
+    time: 0,
+    setGameTimer(){
+        const $timer = $('#timer');
+        setInterval(()=>{
+                this.time++
+            
+            $timer.text(`timer: ${this.time}s`)
+            
+        }, 1000)
+    },
+    
+
+}
 
