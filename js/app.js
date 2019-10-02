@@ -9,20 +9,7 @@ class Tomagotchi {
     greet(){
         console.log('Kon-nichiwa')
     }
-    // getHunger(){
-    //     // if($timer > 10){
-    //     //    return this.hunger++
-    //     // }else{
-    //     //    return this.hunger--
-    //     // }
-       
-    // }
-    // getSleepiness(){
-
-    // }
-    // getBoredom(){
-
-    // }
+    
 };
 const henry = new Tomagotchi();//instantiate your tomagotchi
 henry.greet();
@@ -30,12 +17,15 @@ henry.greet();
 
 $('#gameTimer').on('click', ()=>{
     console.log('button works');
+    const setName = prompt('Give Pet Name');
+        game.player = setName; // where is the name going?
+
     game.setGameTimer();
     game.getHunger();
     game.getSleepiness();
     game.getBoredom();
+    game.petDies();
 })
-
 
 
 
@@ -52,33 +42,49 @@ const game = {
             $timer.text(`timer: ${this.time}s`)
             
         }, 1000)
+
     },
     getHunger(){
         const $hunger = $('#hunger');
-        setInterval(()=>{
+        const interval = setInterval(()=>{
+            if(this.hunger === 10){
+                clearInterval(interval);
+            }else{
                 this.hunger++
-               $hunger.text(`Hunger: ${this.hunger}`)
+            }
+            $hunger.text(`Hunger: ${this.hunger}`)
         }, 5000)
      },
      getSleepiness(){
          const $sleepiness = $('#sleep');
-         setInterval(()=>{
-             this.sleepiness++
+         const interval = setInterval(()=>{
+             if(this.sleepiness === 10){
+                 clearInterval(interval);
+             }else{
+                this.sleepiness++
+
+             }
              $sleepiness.text(`Sleep: ${this.sleepiness}`)
          }, 5000)
      },
      getBoredom(){
          const $boredom = $('#bored');
-         setInterval(()=>{
-             this.boredom++
+         const interval = setInterval(()=>{
+             if(this.boredom === 10){
+                 clearInterval(interval)
+             }else{
+                 this.boredom++
+             }
              $boredom.text(`Boredom:${this.boredom}`)
          }, 5000)
+     },
+     petDies(){
+         if(this.hunger === 10){
+             alert('pet is dead');
+         }/// What I want to happen: 
+         //when the hunger reached 10 the pet dies
      }
 
     
-    
-    
-
-
 }
 

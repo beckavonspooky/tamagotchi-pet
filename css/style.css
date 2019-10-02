@@ -1,0 +1,52 @@
+*,
+html{
+    font-size: 62.5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    height: 60rem;
+    width: 55rem;
+    border: 0.1rem solid black;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+h1{
+    font-size: 35px;
+}
+#startGame{
+    padding: 15px;
+}
+#gameTimer{
+    padding: 10px;
+    background-color: cadetblue;
+    font-size: 20px;
+}
+#timer{
+    padding: 10px;
+    font-size: 20px;
+}
+#life{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 35px;
+}
+#hunger{
+    padding-right: 25px;
+}
+#sleep{
+    padding-right: 25px;
+}
+#bored{
+    padding-right: 25px;
+}
+#buttons{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 35px;
+}
+#feed{
+    padding-right: 25px;
+}
