@@ -3,8 +3,8 @@ html{
     font-size: 62.5%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-body{
-    height: 60rem;
+.container{
+    height: 70rem;
     width: 55rem;
     border: 0.1rem solid black;
     border-radius: 50px 20px;
@@ -12,12 +12,14 @@ body{
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    background-image: linear-gradient(plum,white);
+    
     
 }
 h1{
     font-size: 35px;
 }
-h2{
+h2,h3{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
 }
@@ -36,6 +38,7 @@ img{
     background-color: cadetblue;
     font-size: 20px;
     margin: 10px;
+    border: 0.1rem solid black;
     border-radius: 50px 20px;
     
 }
@@ -47,6 +50,8 @@ img{
     display: flex;
     flex-wrap: wrap;
     font-size: 35px;
+    margin: 15px;
+    padding: 15px;
 }
 #hunger{
     padding-right: 25px;
@@ -66,10 +71,19 @@ img{
 }
 #feed{
     background-color: cornflowerblue;
+    border: 0.1rem solid black;
+    border-radius: 50px 20px;
+    margin-right: 15px;
 }
 #light{
     background-color: lightpink;
+    border: 0.1rem solid black;
+    border-radius: 50px 20px;
+    margin-right: 15px;
 }
 #play{
     background-color: plum;
+    border: 0.1rem solid black;
+    border-radius: 50px 20px;
+    margin-right: 15px;
 }
