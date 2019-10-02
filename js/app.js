@@ -11,15 +11,20 @@ class Tomagotchi {
     }
     
 };
-const henry = new Tomagotchi();//instantiate your tomagotchi
-henry.greet();
 
 
 $('#gameTimer').on('click', ()=>{
-    console.log('button works');
-    const setName = prompt('Give Pet Name');
-        game.player = setName; // where is the name going?
+    // console.log('button works');
 
+    const setName = prompt('Give Pet Name');
+    game.player = setName; // where is the name going?
+    const henry = new Tomagotchi(game.player);//instantiate your tomagotchi
+    $tama = $('#tamaName')
+    $tama.text(henry.name)
+    henry.greet();
+    console.log(henry)
+
+    game.petAge();
     game.setGameTimer();
     game.getHunger();
     game.getSleepiness();
@@ -35,12 +40,22 @@ const game = {
     hunger: 0,
     sleepiness: 0,
     boredom: 0,
+    age: 0,
     setGameTimer(){
         const $timer = $('#timer');
         setInterval(()=>{
-                this.time++
+            this.time++
+            this.petDies()//how do you get rid of the prompt
             $timer.text(`timer: ${this.time}s`)
             
+        }, 1000)
+
+    },
+    petAge(){
+        const $age = $('#tamaAge');
+        setInterval(()=>{
+            this.age++
+            $age.text(`Age: ${this.age}`)
         }, 1000)
 
     },
@@ -59,6 +74,7 @@ const game = {
          const $sleepiness = $('#sleep');
          const interval = setInterval(()=>{
              if(this.sleepiness === 10){
+                //  this.petDies()
                  clearInterval(interval);
              }else{
                 this.sleepiness++
@@ -80,9 +96,14 @@ const game = {
      },
      petDies(){
          if(this.hunger === 10){
-             alert('pet is dead');
-         }/// What I want to happen: 
-         //when the hunger reached 10 the pet dies
+             alert('Lil homie starved to death ');
+         }else if(this.sleepiness === 10){
+             alert('Lil homie is dead from sleep deprivation')
+         }else if(this.boredom === 10){
+             alert('Lil homie bored to death')
+         }else if(this.age === 20){
+             alert('Lil homies time to go. RIP')
+         }
      }
 
     
