@@ -184,7 +184,7 @@ const game = {
         }else if(this.boredom === 10 && !this.isDead){
             alert('Lil homie bored to death')
             this.isDead = true;
-        }else if(this.age === 20 && !this.isDead){
+        }else if(this.age === 10 && !this.isDead){
             alert('Lil homies time to go. RIP')
             this.isDead = true;
          }else{

@@ -44,6 +44,7 @@ h3{
     height: 250px;
     align-content: center;
     border-radius: 50px 20px;
+    /* animation: slidein 5s infinite; */
 }
 #lasers{
     display: none;
@@ -124,12 +125,14 @@ h3{
     margin-right: 15px;
     padding: 10px;
 }
-/* .animateDuck{
-    animation: animate 4s infinite; 
-}
-@keyframes animateDuck {
-    0% { top: 0; }
-    50% { top: 30px; left: 20px; }
-    50% { top: 10px; }
-    100% { top: 0; }
+
+
+/* @keyframes slidein {
+    from {
+      transform: translateX(0%);
+    }
+  
+    to {
+      transform: translateX(10%);
+    }
   } */
