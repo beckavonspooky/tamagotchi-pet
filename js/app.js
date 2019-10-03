@@ -10,7 +10,7 @@ class Tomagotchi {
     
 };
 
-
+let interval = null
 $('#gameTimer').on('click', ()=>{
     // console.log('button works');
 
@@ -24,15 +24,15 @@ $('#gameTimer').on('click', ()=>{
     // console.log(henry)
 
     game.petAge();
-    game.setGameTimer();
+    interval = game.setGameTimer();
     game.getHunger();
     game.getSleepiness();
     game.getBoredom();
     game.petDies();
 })
 $('#feed').on('click', (e)=>{
-    console.log(e.target)
     game.feedPet()
+    
 })
 $('#light').on('click', (e)=>{
     console.log(e.target)
@@ -54,19 +54,33 @@ const game = {
     isDead: false,
     setGameTimer(){
         const $timer = $('#timer');
-        setInterval(()=>{
+        const interval = setInterval(()=>{
             this.time++
             this.petDies()//how do you get rid of the prompt
-            $timer.text(`timer: ${this.time}s`)  
+            $timer.text(`timer: ${this.time}s`);
+            if(this.isDead === true){
+                clearInterval(interval);
+            }
         }, 1000)
-
+        return interval
     },
     petAge(){
         const $age = $('#tamaAge');
-        setInterval(()=>{
-            this.age++
+        const interval = setInterval(()=>{
+            if(this.age === 5){
+                $('.child').css('display','none')
+                $('#teen').css('display','block')
+                this.age++
+            }else if(this.age === 10){
+                $('.child').css('display','none')
+                $('#teen').css('display','none')
+                $('#dead').css('display','block')
+                clearInterval(interval);
+            }else{
+                this.age++
+            }
             $age.text(`Age: ${this.age}`)
-        }, 3000)
+        }, 5000)
 
     },
     getHunger(){
@@ -88,9 +102,8 @@ const game = {
                  clearInterval(interval);
              }else{
                 this.sleepiness++
-
              }
-             $sleepiness.text(`Sleep: ${this.sleepiness}`)
+             $sleepiness.text(`Sleepiness: ${this.sleepiness}`)
          }, 5000)
      },
      getBoredom(){
@@ -117,6 +130,7 @@ const game = {
         }else if(this.age === 20 && !this.isDead){
             alert('Lil homies time to go. RIP')
             this.isDead = true;
+         }else{
          }
      },
      feedPet(){
@@ -125,13 +139,16 @@ const game = {
      },
      sleepPet(){
          this.sleepiness--
-         $('#sleep').text(`Sleepiness: ${this.sleepiness}`)
+         $('#sleep').text(`Sleep: ${this.sleepiness}`)
 
      },
      playPet(){
          this.boredom--
          $('#bored').text(`Boredom:${this.boredom}`)
      },
+     timerStop(){
+        clearInterval(interval)
+     }
 
     
 }
