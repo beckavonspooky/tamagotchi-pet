@@ -31,16 +31,27 @@ $('#gameTimer').on('click', ()=>{
     game.petDies();
 })
 $('#feed').on('click', (e)=>{
+    if(this.hunger > 0){
+        this.hunger--
+        $('#hunger').text(`Hunger: ${this.hunger}`)
+    }
     game.feedPet()
     
 })
 $('#light').on('click', (e)=>{
-    console.log(e.target)
+    if(this.sleepiness > 0){
+        this.sleepiness--
+         $('#sleep').text(`Sleepiness: ${this.sleepiness}`)
+    }
     game.sleepPet()
     
 })
 $('#play').on('click', (e)=>{
     console.log(e.target)
+    if(this.boredom > 0){
+        this.boredom--
+         $('#bored').text(`Boredom:${this.boredom}`)
+    }
     game.playPet()
 })
 
@@ -58,7 +69,7 @@ const game = {
             this.time++
             this.petDies()//how do you get rid of the prompt
             $timer.text(`timer: ${this.time}s`);
-            if(this.isDead === true){
+            if(this.isDead){
                 clearInterval(interval);
             }
         }, 1000)
@@ -134,17 +145,23 @@ const game = {
          }
      },
      feedPet(){
-        this.hunger--
-        $('#hunger').text(`Hunger: ${this.hunger}`)
+         if(this.hunger > 0){
+             this.hunger--
+             $('#hunger').text(`Hunger: ${this.hunger}`)
+         }
      },
      sleepPet(){
-         this.sleepiness--
-         $('#sleep').text(`Sleep: ${this.sleepiness}`)
+         if(this.sleepiness > 0){
+             this.sleepiness--
+             $('#sleep').text(`Sleep: ${this.sleepiness}`)
+         }
 
      },
      playPet(){
-         this.boredom--
-         $('#bored').text(`Boredom:${this.boredom}`)
+         if(this.boredom > 0){
+             this.boredom--
+             $('#bored').text(`Boredom:${this.boredom}`)
+         }
      },
      timerStop(){
         clearInterval(interval)
