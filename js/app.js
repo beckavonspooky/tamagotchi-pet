@@ -94,31 +94,32 @@ const game = {
     boredom: 0,
     age: 0,
     isDead: false,
+    ageInterval:null,
     setGameTimer(){
         const $timer = $('#timer');
         const interval = setInterval(()=>{
             this.time++
-            this.petDies()//how do you get rid of the prompt
+            this.petDies()
             $timer.text(`timer: ${this.time}s`);
             if(this.isDead){
                 clearInterval(interval);
-                // return
+                clearInterval(this.ageInterval);
             }
         }, 1000)
-        // return interval
+        
     },
     petAge(){
         const $age = $('#tamaAge');
-        const interval = setInterval(()=>{
+        this.ageInterval = setInterval(()=>{
             if(this.age === 5){
                 $('.child').css('display','none')
                 $('#teen').css('display','block')
                 this.age++
-            }else if(this.age === 20){
+            }else if(this.age === 10){
                 $('.child').css('display','none')
                 // $('#teen').css('display','none')
                 $('#dead').css('display','block')
-                clearInterval(interval);
+                clearInterval(this.ageInterval);
             }else{
                 this.age++
             }
@@ -129,11 +130,13 @@ const game = {
     getHunger(){
         const $hunger = $('#hunger');
         const interval = setInterval(()=>{
-            if(this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 20){
+            if(this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 10){
                 $('.child').css('display','none')
                 $('#teen').css('display','none')
                 $('#dead').css('display','block')
                 clearInterval(interval);
+                clearInterval(this.ageInterval);
+
             }else{
                 this.hunger++
             }
@@ -143,12 +146,13 @@ const game = {
      getSleepiness(){
          const $sleepiness = $('#sleep');
          const interval = setInterval(()=>{
-             if(this.sleepiness === 10 || this.hunger === 10 || this.boredom === 10 || this.age === 20){
+             if(this.sleepiness === 10 || this.hunger === 10 || this.boredom === 10 || this.age === 10){
                 //  this.petDies()
                 $('.child').css('display','none')
                 $('#teen').css('display','none')
                 $('#dead').css('display','block')
                  clearInterval(interval);
+                 clearInterval(this.ageInterval);
              }else{
                 this.sleepiness++
              }
@@ -158,11 +162,12 @@ const game = {
      getBoredom(){
          const $boredom = $('#bored');
          const interval = setInterval(()=>{
-             if(this.boredom === 10 || this.hunger === 10 || this.sleepiness === 10 || this.age === 20){
+             if(this.boredom === 10 || this.hunger === 10 || this.sleepiness === 10 || this.age === 10){
                 $('.child').css('display','none')
                 $('#teen').css('display','none')
                 $('#dead').css('display','block')
-                 clearInterval(interval)
+                 clearInterval(interval);
+                 clearInterval(this.ageInterval);
              }else{
                  this.boredom++
              }
