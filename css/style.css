@@ -10,7 +10,7 @@ html{
     border-radius: 50px 20px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     background-image: linear-gradient(plum,white);
     
@@ -18,36 +18,53 @@ html{
 }
 h1{
     font-size: 35px;
+    position: absolute;
+    top: 25px;
 }
 h2,h3{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 25px;
+    top: 25px;
+    
+}
+#images{
+    width: 250px;
+    height: 250px;
+    border: 0.6rem solid black;
+    border-radius: 50px 20px;
+
 }
 .child{
-    width: 200px;
-    height: 200px;
-    border: 0.3rem solid black;
+    width: 250px;
+    height: 250px;
+    align-content: center;
     border-radius: 50px 20px;
-    margin: 20px;
+}
+#lasers{
+    display: none;
+    width: 250px;
+    height: 250px;
+    border-radius: 50px 20px;
 }
 #teen{
     display: none;
-    width: 200px;
-    height: 200px;
-    border: 0.3rem solid black;
+    width: 250px;
+    height: 250px;
     border-radius: 50px 20px;
-    margin: 20px;
+}
+#teenlaser{
+    display: none;
+    width: 250px;
+    height: 250px;
+    border-radius: 50px 20px;
 }
 #dead{
     display: none;
-    width: 200px;
-    height: 200px;
-    border: 0.3rem solid black;
+    width: 250px;
+    height: 250px;
     border-radius: 50px 20px;
-    margin: 20px;
 
 }
-
 .startGame{
     padding: 15px;
 }
@@ -56,8 +73,7 @@ h2,h3{
     background-color: cadetblue;
     font-size: 20px;
     margin: 10px;
-    border: 0.1rem solid black;
-    border-radius: 50px 20px;
+    border-radius: 50px;
     
 }
 #timer{
@@ -89,21 +105,19 @@ h2,h3{
 }
 #feed{
     background-color: cornflowerblue;
-    border: 0.1rem solid black;
-    border-radius: 50px 20px;
+    border-radius: 50px;
     margin-right: 15px;
 }
 #light{
     background-color: lightpink;
-    border: 0.1rem solid black;
-    border-radius: 50px 20px;
+    border-radius: 50px;
     margin-right: 15px;
 }
 #play{
     background-color: plum;
-    border: 0.1rem solid black;
-    border-radius: 50px 20px;
+    border-radius: 50px;
     margin-right: 15px;
+    padding: 10px;
 }
 /* .animateDuck{
     animation: animate 4s infinite; 

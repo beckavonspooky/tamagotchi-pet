@@ -38,14 +38,34 @@ $('#feed').on('click', (e)=>{
     game.feedPet()
     
 })
+$('#feed').on('mousedown', () => {
+    $('.child').attr('src', 'https://i.imgur.com/T3TOMSd.png')
+    $('#teen').attr('src', 'https://i.imgur.com/T3TOMSd.png')
+})
+
+$('#feed').on('mouseup', () => {
+    $('.child').attr('src', 'https://i.imgur.com/gNjStD3.png')
+    $('#teen').attr('src', 'https://i.imgur.com/Qups4qA.png')
+})
+
 $('#light').on('click', (e)=>{
     if(this.sleepiness > 0){
         this.sleepiness--
          $('#sleep').text(`Sleepiness: ${this.sleepiness}`)
     }
     game.sleepPet()
+})
+$('#light').on('mousedown', () => {
+    $('.child').attr('src', 'https://i.imgur.com/AoUo0Ry.png')
+    $('#teen').attr('src', 'https://i.imgur.com/NtSzy6m.png')
     
 })
+$('#light').on('mouseup', () => {
+    $('.child').attr('src', 'https://i.imgur.com/gNjStD3.png')
+    $('#teen').attr('src', 'https://i.imgur.com/Qups4qA.png')
+    
+})
+
 $('#play').on('click', (e)=>{
     console.log(e.target)
     if(this.boredom > 0){
@@ -53,6 +73,17 @@ $('#play').on('click', (e)=>{
          $('#bored').text(`Boredom:${this.boredom}`)
     }
     game.playPet()
+})
+
+$('#play').on('mousedown', () => {
+    $('.child').attr('src', 'https://i.imgur.com/1tXoZ1X.png')
+    $('#teen').attr('src', 'https://i.imgur.com/1tXoZ1X.png')
+    
+})
+$('#play').on('mouseup', () => {
+    $('.child').attr('src', 'https://i.imgur.com/gNjStD3.png')
+    $('#teen').attr('src', 'https://i.imgur.com/Qups4qA.png')
+    
 })
 
 const game = {
@@ -71,7 +102,7 @@ const game = {
             $timer.text(`timer: ${this.time}s`);
             if(this.isDead){
                 clearInterval(interval);
-                return
+                // return
             }
         }, 1000)
         // return interval
@@ -85,7 +116,7 @@ const game = {
                 this.age++
             }else if(this.age === 20){
                 $('.child').css('display','none')
-                $('#teen').css('display','none')
+                // $('#teen').css('display','none')
                 $('#dead').css('display','block')
                 clearInterval(interval);
             }else{
@@ -136,7 +167,7 @@ const game = {
                  this.boredom++
              }
              $boredom.text(`Boredom:${this.boredom}`)
-         }, 10000)
+         }, 5000)
      },
      petDies(){
          if(this.hunger === 10 && !this.isDead){
@@ -163,7 +194,7 @@ const game = {
      sleepPet(){
          if(this.sleepiness > 0){
              this.sleepiness--
-             $('#sleep').text(`Sleep: ${this.sleepiness}`)
+             $('#sleep').text(`Sleepiness: ${this.sleepiness}`)
          }
 
      },
