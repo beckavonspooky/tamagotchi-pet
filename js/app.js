@@ -71,9 +71,10 @@ const game = {
             $timer.text(`timer: ${this.time}s`);
             if(this.isDead){
                 clearInterval(interval);
+                return
             }
         }, 1000)
-        return interval
+        // return interval
     },
     petAge(){
         const $age = $('#tamaAge');
@@ -82,7 +83,7 @@ const game = {
                 $('.child').css('display','none')
                 $('#teen').css('display','block')
                 this.age++
-            }else if(this.age === 10){
+            }else if(this.age === 20){
                 $('.child').css('display','none')
                 $('#teen').css('display','none')
                 $('#dead').css('display','block')
@@ -97,7 +98,10 @@ const game = {
     getHunger(){
         const $hunger = $('#hunger');
         const interval = setInterval(()=>{
-            if(this.hunger === 10){
+            if(this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10 || this.age === 20){
+                $('.child').css('display','none')
+                $('#teen').css('display','none')
+                $('#dead').css('display','block')
                 clearInterval(interval);
             }else{
                 this.hunger++
@@ -108,19 +112,25 @@ const game = {
      getSleepiness(){
          const $sleepiness = $('#sleep');
          const interval = setInterval(()=>{
-             if(this.sleepiness === 10){
+             if(this.sleepiness === 10 || this.hunger === 10 || this.boredom === 10 || this.age === 20){
                 //  this.petDies()
+                $('.child').css('display','none')
+                $('#teen').css('display','none')
+                $('#dead').css('display','block')
                  clearInterval(interval);
              }else{
                 this.sleepiness++
              }
              $sleepiness.text(`Sleepiness: ${this.sleepiness}`)
-         }, 5000)
+         }, 6000)
      },
      getBoredom(){
          const $boredom = $('#bored');
          const interval = setInterval(()=>{
-             if(this.boredom === 10){
+             if(this.boredom === 10 || this.hunger === 10 || this.sleepiness === 10 || this.age === 20){
+                $('.child').css('display','none')
+                $('#teen').css('display','none')
+                $('#dead').css('display','block')
                  clearInterval(interval)
              }else{
                  this.boredom++
